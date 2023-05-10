@@ -1,10 +1,9 @@
 /* eslint-disable camelcase */
 
 import clsx from 'clsx'
+import { capitalize } from 'lodash'
 import Image from 'next/image'
 import type { Pokemon } from 'pokenode-ts'
-
-const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
 const statsColors = ['bg-pk-blue', 'bg-pk-yellow', 'bg-pk-green']
 

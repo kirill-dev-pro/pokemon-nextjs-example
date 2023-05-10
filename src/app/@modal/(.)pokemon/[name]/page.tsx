@@ -1,5 +1,3 @@
-// 'use client'
-
 import { Modal } from 'components/Modal'
 import { PokemonView } from 'components/PokemonView'
 
