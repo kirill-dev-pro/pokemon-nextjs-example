@@ -1,28 +1,27 @@
-import Image from 'next/image'
-import logo from 'assets/logo.svg'
-import Link from 'next/link'
+import { PokemonGrid } from 'components/PokemonGrid'
+import type { Pokemon } from 'types'
 
-export default function Home() {
+export default async function Home() {
+  const { results: pokemons, count } = await fetch(
+    'https://pokeapi.co/api/v2/pokemon?' +
+      new URLSearchParams({
+        limit: '10000',
+        offset: '0',
+      }),
+    {
+      cache: 'force-cache',
+    },
+  ).then(res => res.json() as Promise<{ results: Pokemon[]; count: number }>)
+
+  // const { results: pokemons, count } = await pokemonClient.listPokemons(0, 10000)
+
   return (
-    <>
-      <header className='flex h-[93px] flex-row items-center justify-center bg-[#F5DB13]'>
-        <nav className='flex max-w-4xl flex-1 flex-row items-center'>
-          <Image src={logo} width={157} height={63} alt='logo' className='mx-20' />
-          <ul className='flex flex-1 flex-row justify-evenly text-black'>
-            <li>
-              <Link href='/' className='active:underline'>
-                Home
-              </Link>
-            </li>
-            <li>Pokédex</li>
-            <li>Legendaries</li>
-            <li>Documentation</li>
-          </ul>
-        </nav>
-      </header>
-      <main className='flex min-h-[calc(100dvh-93px)] flex-col items-center justify-between p-24'>
-        <div> Hello</div>
-      </main>
-    </>
+    <div className='w-full max-w-2xl'>
+      Home
+      <h1 className='text-xl'>
+        {count} <b>Pokemons</b> for you to choose your favorite
+      </h1>
+      <PokemonGrid pokemons={pokemons} />
+    </div>
   )
 }

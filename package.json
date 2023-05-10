@@ -9,11 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.14",
+    "@types/lodash": "^4.14.194",
     "@types/node": "20.1.1",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "axios-cache-interceptor": "^1.0.1",
+    "clsx": "^1.2.1",
+    "lodash": "^4.17.21",
     "next": "13.4.1",
+    "pokenode-ts": "^1.18.3",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
